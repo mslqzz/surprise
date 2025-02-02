@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Proposal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+            background: linear-gradient(to bottom right, #000000, #8B0000); /* Black to dark red gradient */
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            font-size: 4em;
+            color: #fff;
+            margin-top: 80px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #fff;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            margin: 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .yes-btn {
+            background-color: #f39c12;
+            color: white;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .no-btn {
+            background-color: #e74c3c;
+            color: white;
+            position: relative;
+            transition: transform 0.1s ease-in-out;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .no-btn:hover {
+            transform: scale(1.1);
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 4em;
+            color: #ffd700; /* Gold color */
+            animation: sparkle 2s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-10px) scale(1.5);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 3em;
+            color: #ff3366;
+            animation: heart-float 5s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes heart-float {
+            0% {
+                transform: translateY(100%) scale(1);
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/diamond.png');
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .disappear {
+            display: none;
+        }
+
+        .interactive-message {
+            font-size: 2em;
+            color: #f39c12;
+            font-weight: bold;
+            opacity: 0;
+            animation: message-animation 3s forwards;
+        }
+
+        @keyframes message-animation {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pattern"></div>
+    <h1>      ╭────────༺୨ ✧ ୧༻────────╮
+        . ˚ ༘ ⋆｡˚꒰Will you be my Valentine?꒱˚ ༘ ⋆｡˚.
+              ╰─────────  ʚ♡ɞ  ─────────╯
+    </h1>
+    <p>Click Yes or No!</p>
+
+    <button class="btn yes-btn" id="yesBtn" onclick="showValentineMessage()">Yes</button>
+    <button class="btn no-btn" id="noBtn" onclick="moveNoButton()">No</button>
+
+    <div id="message" class="heart interactive-message" style="display:none;">
+                         
+    </div>
+
+    <script>
+        function showValentineMessage() {
+            // Hide the "Yes" button after click
+            document.getElementById("yesBtn").style.display = "none";
+
+            // Hide the "No" button after click
+            document.getElementById("noBtn").style.display = "none";
+
+            // Display sparkling effect and hearts
+            for (let i = 0; i < 20; i++) {
+                createSparkle();
+            }
+            for (let j = 0; j < 10; j++) {
+                createHeart();
+            }
+
+            // Change message and add animation
+            document.getElementById("message").style.display = "block";
+            document.querySelector("h1").innerText = "────୨ৎ────";
+            document.querySelector("p").innerText = "Enjoy the rest of your day!";
+
+            // Add an interactive fancy message
+            let interactiveMessage = document.createElement('div');
+            interactiveMessage.classList.add('interactive-message');
+            interactiveMessage.innerHTML = "ok bye nigga <3";
+            document.body.appendChild(interactiveMessage);
+
+            setTimeout(() => {
+                interactiveMessage.style.opacity = 1;
+            }, 100);
+        }
+
+        function createSparkle() {
+            let sparkle = document.createElement("div");
+            sparkle.classList.add("sparkle");
+            sparkle.innerHTML = "⋆★⋆";
+            sparkle.style.left = Math.random() * window.innerWidth + "px";
+            sparkle.style.top = Math.random() * window.innerHeight + "px";
+            document.body.appendChild(sparkle);
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "♡";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        function moveNoButton() {
+            var noButton = document.getElementById("noBtn");
+            let randomX = Math.random() * window.innerWidth;
+            let randomY = Math.random() * window.innerHeight;
+            noButton.style.position = "absolute";
+            noButton.style.left = randomX + "px";
+            noButton.style.top = randomY + "px";
+            noButton.style.transition = "left 0.1s, top 0.1s"; // Faster movement for "No"
+        }
+    </script>
+</body>
+</html>
